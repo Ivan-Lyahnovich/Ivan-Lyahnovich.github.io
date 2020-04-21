@@ -394,7 +394,7 @@ Game.World = function(friction = 0.85, gravity = 2) {
   this.rows      = 9;
 
   this.tile_set  = new Game.TileSet(8, 16);
-  this.player    = new Game.Player(32, 76);
+  this.player    = new Game.Player(80, 32);
 
   this.zone_id   = "00";// Текущая зона.
 
