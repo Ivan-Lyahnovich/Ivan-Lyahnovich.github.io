@@ -1,24 +1,11 @@
-// Frank Poth 04/18/2018
-
-/* Changes:
-
-  1. Added the drawing calls for drawing the grass and carrots in render.
-  2. Added a p element for showing the number of carrots collected.
-
-*/
+/* Добавлен элемент p для отображения количества собранной моркови.*/
 
 window.addEventListener("load", function(event) {
 
   "use strict";
 
-  //// CONSTANTS ////
-
   const ZONE_PREFIX = "07/zone";
   const ZONE_SUFFIX = ".json";
-
-      /////////////////
-    //// CLASSES ////
-  /////////////////
 
   const AssetsManager = function() {
 
@@ -159,7 +146,7 @@ window.addEventListener("load", function(event) {
   var engine         = new Engine(1000/30, render, update);
 
   var p              = document.createElement("p");
-  p.setAttribute("style", "color:#F80000; font-size:16pt; position:fixed;");
+  p.setAttribute("style", "color:#F80000; font-size:14pt; position:fixed;");
   p.innerHTML = "Собрано яблок: 0";
   document.body.appendChild(p);
 

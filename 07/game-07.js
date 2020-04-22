@@ -11,7 +11,7 @@ const Game = function() {
 };
 Game.prototype = { constructor : Game };
 
-// Made the default animation type "loop":
+// Анимация по умолчанию тип «петля»:
 Game.Animator = function(frame_set, delay, mode = "loop") {
 
  this.count       = 0;
@@ -70,7 +70,6 @@ Game.Animator.prototype = {
 
 Game.Collider = function() {
 
-  /* I changed this so all the checks happen in y first order. */
   this.collide = function(value, object, tile_x, tile_y, tile_size) {
 
     switch(value) {
@@ -168,7 +167,7 @@ Game.Collider.prototype = {
 
  };
 
-// Added default values of 0 for offset_x and offset_y
+// Добавлены значения по умолчанию 0 для offset_x и offset_y
 Game.Frame = function(x, y, width, height, offset_x = 0, offset_y = 0) {
 
   this.x        = x;
@@ -193,7 +192,7 @@ Game.Object.prototype = {
 
   constructor:Game.Object,
 
-  /* Now does rectangular collision detection. */
+  /* Поиск прямоугольных столкновений */
   collideObject:function(object) {
 
     if (this.getRight()  < object.getLeft()  ||
@@ -205,7 +204,7 @@ Game.Object.prototype = {
 
   },
 
-  /* Does rectangular collision detection with the center of the object. */
+  /* Поиск столкновений с центром объекта. */
   collideObjectCenter:function(object) {
 
     let center_x = object.getCenterX();
@@ -238,14 +237,14 @@ Game.MovingObject = function(x, y, width, height, velocity_max = 15) {
   Game.Object.call(this, x, y, width, height);
 
   this.jumping      = false;
-  this.velocity_max = velocity_max;// added velocity_max so velocity can't go past 16
+  this.velocity_max = velocity_max;
   this.velocity_x   = 0;
   this.velocity_y   = 0;
   this.x_old        = x;
   this.y_old        = y;
 
 };
-/* I added setCenterX, setCenterY, getCenterX, and getCenterY */
+
 Game.MovingObject.prototype = {
 
   getOldBottom : function()  { return this.y_old + this.height;       },
@@ -265,7 +264,7 @@ Game.MovingObject.prototype = {
 Object.assign(Game.MovingObject.prototype, Game.Object.prototype);
 Game.MovingObject.prototype.constructor = Game.MovingObject;
 
-/* The carrot class extends Game.Object and Game.Animation. */
+/* Данный класс расширяет возможности Game.Object и Game.Animation. */
 Game.Carrot = function(x, y) {
 
   Game.Object.call(this, x, y, 7, 14);
@@ -273,9 +272,9 @@ Game.Carrot = function(x, y) {
 
   this.frame_index = Math.floor(Math.random() * 2);
 
-  /* base_x and base_y are the point around which the carrot revolves. position_x
-  and y are used to track the vector facing away from the base point to give the carrot
-  the floating effect. */
+  /* base_x и base_y - это точка, вокруг которой вращается яблоко. position_x
+   и y используются для отслеживания вектора, обращенного от базовой точки, чтобы дать яблоку
+   плавающий эффект. */
   this.base_x     = x;
   this.base_y     = y;
   this.position_x = Math.random() * Math.PI * 2;
@@ -360,7 +359,6 @@ Game.Player.prototype = {
 
   jump: function() {
 
-    /* Made it so you can only jump if you aren't falling faster than 10px per frame. */
     if (!this.jumping && this.velocity_y < 10) {
 
       this.jumping     = true;
@@ -415,7 +413,6 @@ Game.Player.prototype = {
     this.velocity_y += gravity;
     this.velocity_x *= friction;
 
-    /* Made it so that velocity cannot exceed velocity_max */
     if (Math.abs(this.velocity_x) > this.velocity_max)
     this.velocity_x = this.velocity_max * Math.sign(this.velocity_x);
 
@@ -467,8 +464,8 @@ Game.World = function(friction = 0.85, gravity = 2) {
 
   this.zone_id      = "00";
 
-  this.carrots      = [];// the array of carrots in this zone;
-  this.carrot_count = 0;// the number of carrots you have.
+  this.carrots      = [];
+  this.carrot_count = 0;
   this.doors        = [];
   this.door         = undefined;
 
@@ -481,9 +478,6 @@ Game.World.prototype = {
   constructor: Game.World,
 
   collideObject:function(object) {
-
-    /* I got rid of the world boundary collision. Now it's up to the tiles to keep
-    the player from falling out of the world. */
 
     var bottom, left, right, top, value;
 
@@ -546,7 +540,7 @@ Game.World.prototype = {
       if (this.door.destination_x != -1) {
 
         this.player.setCenterX   (this.door.destination_x);
-        this.player.setOldCenterX(this.door.destination_x);// It's important to reset the old position as well.
+        this.player.setOldCenterX(this.door.destination_x);
 
       }
 
@@ -557,7 +551,7 @@ Game.World.prototype = {
 
       }
 
-      this.door = undefined;// Make sure to reset this.door so we don't trigger a zone load.
+      this.door = undefined;
 
     }
 
