@@ -1,6 +1,6 @@
 # Игра Piggy-man
 Данная ссылка осуществляет переход к данной игре:
-    https://ivan-lyahnovich.github.io/piggy-man.html?05
+    https://ivan-lyahnovich.github.io/piggy-man.html?07
     
 При клонировании репозитория 6 и 7 работа не будет отображаться, так как требуется наличие сервера.  
 Данная игра находится на сервере GitHab.  
