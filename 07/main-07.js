@@ -159,7 +159,7 @@ window.addEventListener("load", function(event) {
   var engine         = new Engine(1000/30, render, update);
 
   var p              = document.createElement("p");
-  p.setAttribute("style", "color:#F80000; font-size:2.0em; position:fixed;");
+  p.setAttribute("style", "color:#F80000; font-size:16pt; position:fixed;");
   p.innerHTML = "Собрано яблок: 0";
   document.body.appendChild(p);
 
