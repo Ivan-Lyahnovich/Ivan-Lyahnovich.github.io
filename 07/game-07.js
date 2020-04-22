@@ -1,18 +1,3 @@
-// Frank Poth 04/18/2018
-
-/* Changes since part 6:
-
-  1. Added the carrots array to the zone file.
-  2. Moved the collideObject method out of Game.Door and into Game.Object.
-  3. Renamed collideObject to collideObjectCenter and made a new collideObject function for rectangular collision detection.
-  4. Added the Game.Carrot class and Game.Grass class.
-  5. Added frames for carrots and grass to the tile_set.
-  6. Made a slight change to the Game.Animator constructor.
-  7. Added carrot_count to count carrots.
-  8. Added the grass array to the zone file. Also reflected in Game.World
-
-*/
-
 const Game = function() {
 
   this.world    = new Game.World();
@@ -461,7 +446,7 @@ Game.TileSet = function(columns, tile_size) {
                  new f( 80,  96, 16, 16, 1, -4), // прыжок в правую сторону
                  new f( 16,  96, 16, 16, 1, -4), new f(32, 96, 16, 16, 1, -4), new f(48, 96, 16, 16, 1, -4), new f(16, 96, 16, 16, 1, -4), // ходьба в правую сторону
                  new f( 114, 96, 14, 16), new f(98, 96, 14, 16), // яблоко
-                 new f( 16, 67, 16, 4), new f(16, 76, 16, 4), new f(16, 62, 16, 4) // трава
+                 new f( 16, 67, 16, 4), new f(16, 76, 16, 4), new f(16, 71, 16, 4) // трава
                 ];
 
 };
