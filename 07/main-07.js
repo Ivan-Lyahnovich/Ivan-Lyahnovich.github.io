@@ -61,10 +61,6 @@ window.addEventListener("load", function(event) {
 
   };
 
-      ///////////////////
-    //// FUNCTIONS ////
-  ///////////////////
-
   var keyDownUp = function(event) {
 
     controller.keyDownUp(event.type, event.keyCode);
@@ -124,7 +120,7 @@ window.addEventListener("load", function(event) {
 
     }
 
-    p.innerHTML = "Carrots: " + game.world.carrot_count;
+    p.innerHTML = "Собрано яблок: " + game.world.carrot_count;
 
     display.render();
 
@@ -156,10 +152,6 @@ window.addEventListener("load", function(event) {
 
   };
 
-      /////////////////
-    //// OBJECTS ////
-  /////////////////
-
   var assets_manager = new AssetsManager();
   var controller     = new Controller();
   var display        = new Display(document.querySelector("canvas"));
@@ -168,12 +160,8 @@ window.addEventListener("load", function(event) {
 
   var p              = document.createElement("p");
   p.setAttribute("style", "color:#c07000; font-size:2.0em; position:fixed;");
-  p.innerHTML = "Carrots: 0";
+  p.innerHTML = "Собрано яблок: 0";
   document.body.appendChild(p);
-
-      ////////////////////
-    //// INITIALIZE ////
-  ////////////////////
 
   display.buffer.canvas.height = game.world.height;
   display.buffer.canvas.width  = game.world.width;
