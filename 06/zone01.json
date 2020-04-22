@@ -2,7 +2,7 @@
 
   "doors" : [
 
-    { "x":-16, "y":96, "width":32, "height":32,
+    { "x":-16, "y":112, "width":16, "height":32,
       "destination_zone":"00", "destination_x":192, "destination_y":-1 },
 
     { "x":192, "y":16, "width":16, "height":16,
